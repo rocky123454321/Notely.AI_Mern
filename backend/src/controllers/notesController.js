@@ -19,7 +19,7 @@ export const getNotesById = asyncHandler(async (req, res) => {
   res.status(200).json(note);
 });
 
-//CREATE NOTE
+//CREATE NOTEs
 export const createNote = asyncHandler(async (req, res) => {
   const { title, content } = req.body;
   const note = await Note.create({ title, content });
