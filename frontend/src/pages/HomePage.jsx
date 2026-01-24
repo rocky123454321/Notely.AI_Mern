@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import RateLimit from "../components/RateLimit";
 import NoteCard from "../components/NoteCard";
 import AiChat from "../components/AiChat";
-import Modal from "../components/modal";
+import Modal from "../components/ModalShow";
 import { Link } from "react-router-dom";
 import { Sparkles } from "lucide-react";
 
