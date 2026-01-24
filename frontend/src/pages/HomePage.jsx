@@ -30,7 +30,7 @@ const HomePage = () => {
     };
   }, []);
 
-  // Fetch notes (example)
+  // Fetch notes (example)q
   useEffect(() => {
     const fetchNotes = async () => {
       try {
