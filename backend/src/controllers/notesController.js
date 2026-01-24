@@ -1,58 +1,50 @@
 import asyncHandler from "express-async-handler";
 import Note from "../models/Note.js";
 
-//GET ALL NOTES
+// GET all notes for logged-in user
 export const getAllNotes = asyncHandler(async (req, res) => {
-  const notes = await Note.find().sort({createdAt: -1});
+  const notes = await Note.find({ userId: req.user._id }).sort({ createdAt: -1 });
   res.status(200).json(notes);
 });
 
-//GET NOTE BY ID
+// GET note by ID for logged-in user
 export const getNotesById = asyncHandler(async (req, res) => {
-  const note = await Note.findById(req.params.id);
-
+  const note = await Note.findOne({ _id: req.params.id, userId: req.user._id });
   if (!note) {
     res.status(404);
-    throw new Error("note not found");
+    throw new Error("Note not found");
   }
-
   res.status(200).json(note);
 });
 
-//CREATE NOTEs
+// CREATE note for logged-in user
 export const createNote = asyncHandler(async (req, res) => {
   const { title, content } = req.body;
-  const note = await Note.create({ title, content });
+  const note = await Note.create({ title, content, userId: req.user._id });
   res.status(201).json(note);
 });
 
-
-//UPDATE NOTES
+// UPDATE note for logged-in user
 export const updateNote = asyncHandler(async (req, res) => {
   const { title, content } = req.body;
-
-  const note = await Note.findByIdAndUpdate(
-    req.params.id,
+  const note = await Note.findOneAndUpdate(
+    { _id: req.params.id, userId: req.user._id },
     { title, content },
     { new: true }
   );
-
   if (!note) {
     res.status(404);
-    throw new Error("note not found");
+    throw new Error("Note not found");
   }
-
   res.status(200).json(note);
 });
 
-//DELETE NOTES
+// DELETE note for logged-in user
 export const deleteNote = asyncHandler(async (req, res) => {
-  const note = await Note.findByIdAndDelete(req.params.id);
-
+  const note = await Note.findOneAndDelete({ _id: req.params.id, userId: req.user._id });
   if (!note) {
     res.status(404);
-    throw new Error("note not found");
+    throw new Error("Note not found");
   }
-
-  res.status(200).json({ message: "successfully deleted" });
+  res.status(200).json({ message: "Successfully deleted" });
 });
