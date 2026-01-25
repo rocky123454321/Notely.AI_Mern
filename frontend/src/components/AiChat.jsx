@@ -128,9 +128,10 @@ const AiChat = () => {
     ))}
 
     {loading && (
-      <div className="flex justify-center py-2">
-        <span className="loading loading-dots loading-sm" />
-      </div>
+     <div className="flex justify-start py-2">
+  <span className="loading loading-dots loading-sm" />
+</div>
+
     )}
 
     <div ref={messagesEndRef} />
