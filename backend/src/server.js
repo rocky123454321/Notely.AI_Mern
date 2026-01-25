@@ -15,7 +15,7 @@ const __dirname = path.resolve();
 app.use(express.json())
 if(process.env.NODE_ENV !== "production"){}
 app.use(cors({
-   origin: ["http://localhost:5173", "https://notely-ai.onrender.com"],
+   origin: [ "https://notely-ai.onrender.com"],
   credentials: true
 }))
 app.use(ratelimiter)
