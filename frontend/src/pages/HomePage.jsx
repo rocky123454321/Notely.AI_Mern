@@ -15,16 +15,25 @@ const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const chatRef = useRef(null);
+  const buttonRef = useRef(null);
 
-  const toggleChat = () => setIsOpen((prev) => !prev);
+  const toggleChat = () => {
+    setIsOpen((prev) => !prev);
+  };
 
-  // Close chat when clicking outside
+  // ✅ Close chat when clicking outside (but NOT the button)
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (chatRef.current && !chatRef.current.contains(event.target)) {
+      if (
+        chatRef.current &&
+        !chatRef.current.contains(event.target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target)
+      ) {
         setIsOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -45,7 +54,6 @@ const HomePage = () => {
         setNotes(res.data);
       } catch (err) {
         console.error("Failed to fetch notes:", err);
-        // Check if it's a rate limit error
         if (err.response?.status === 429) {
           setRateLimit(true);
         }
@@ -53,6 +61,7 @@ const HomePage = () => {
         setLoading(false);
       }
     };
+
     fetchNotes();
   }, []);
 
@@ -67,7 +76,8 @@ const HomePage = () => {
         {loading && (
           <div className="flex justify-center py-20 text-base-content/60">
             <span>
-              Loading <span className="loading loading-bars loading-xs"></span>
+              Loading{" "}
+              <span className="loading loading-bars loading-xs"></span>
             </span>
           </div>
         )}
@@ -95,7 +105,7 @@ const HomePage = () => {
         )}
       </main>
 
-      {/* Floating Chat + Button */}
+      {/* ✅ Floating Chat + Sparkles Button */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
         {isOpen && (
           <div
@@ -107,8 +117,9 @@ const HomePage = () => {
         )}
 
         <button
+          ref={buttonRef}
           onClick={toggleChat}
-          className="w-14 h-14 rounded-full border border-gray-300 bg-white flex items-center justify-center shadow-lg hover:bg-gray-50 transition"
+          className="w-14 h-14 rounded-full border border-gray-300 bg-white flex items-center justify-center shadow-lg hover:bg-gray-50 transition active:scale-95"
         >
           <Sparkles className="w-6 h-6 text-gray-700" />
         </button>
