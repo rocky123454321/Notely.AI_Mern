@@ -1,4 +1,4 @@
-# MERN Thinkboard
+# Notely.AI
 
 A full-stack note-taking application built with the MERN stack (MongoDB, Express.js, React, Node.js) featuring AI-powered chat integration, user authentication, and a responsive UI.
 
@@ -54,7 +54,7 @@ Before running this application, make sure you have the following installed:
 1. **Clone the repository**
    ```bash
    git clone https://github.com/rocky123454321/NoteFlow.git
-   cd mern-thinkboard
+   cd Notely.AI
    ```
 
 2. **Install dependencies**
