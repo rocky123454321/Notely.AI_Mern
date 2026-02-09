@@ -18,17 +18,17 @@ export const getChats = asyncHandler(async (req, res) => {
   res.status(200).json(chats);
 });
 
-// POST: send message
+
 export const sendMessage = asyncHandler(async (req, res) => {
   const { message } = req.body;
-  const userId = req.user._id; // From auth middleware
+  const userId = req.user._id; 
 
   if (!message) {
     res.status(400);
     throw new Error("Message is required");
   }
 
-  // 1️⃣ Save user message
+
   const savedMessage = await Chat.create({
     userId,
     role: "user",
@@ -38,7 +38,7 @@ export const sendMessage = asyncHandler(async (req, res) => {
   let aiReply = "";
 
   try {
-    // 2️⃣ Send message to OpenRouter AI
+
     const stream = await openrouter.chat.send({
       model: "xiaomi/mimo-v2-flash:free",
       messages: [{ role: "user", content: message }],
