@@ -58,6 +58,7 @@ Before running this application, make sure you have the following installed:
 <<<<<<< HEAD
   
 =======
+ ```bash
    git clone https://github.com/rocky123454321/Notely.AI.git
    cd Notely.AI
 >>>>>>> e93fadbd90b5cadc64733ad76b3959e78aabdfea
