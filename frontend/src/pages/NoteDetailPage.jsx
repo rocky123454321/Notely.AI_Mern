@@ -41,7 +41,7 @@ const NoteDetailPage = () => {
     try {
       setSaving(true)
 
-      // Delete note if title/content is empty
+    
       if ((!note.title?.trim() && !note.content?.trim()) || note.title?.trim().length === 0) {
         await api.delete(`/notes/${id}`)
         navigate('/')
@@ -71,18 +71,17 @@ const NoteDetailPage = () => {
       <div className="h-4 w-16 bg-base-300 rounded-md"></div>
     </div>
 
-    {/* Editor skeleton */}
+  
     <div className="rounded-xl border border-base-300 bg-base-100 p-6 sm:p-8 space-y-6 shadow-sm animate-pulse">
-      {/* Title skeleton */}
+  
       <div className="h-10 w-full bg-base-300 rounded-md"></div>
 
-      {/* Content skeleton */}
+
       <div className="h-[320px] w-full bg-base-300 rounded-md"></div>
 
-      {/* Word count skeleton */}
       <div className="h-4 w-20 bg-base-300 rounded-md"></div>
 
-      {/* Save button skeleton */}
+    
       <div className="flex justify-end">
         <div className="h-10 w-24 bg-base-300 rounded-md"></div>
       </div>
@@ -94,7 +93,7 @@ const NoteDetailPage = () => {
 
       ) : (
         <main className="max-w-3xl mx-auto px-4 py-10">
-          {/* Header */}
+       
           <div className="flex items-center justify-between mb-8">
             <Link
               to="/"
@@ -113,7 +112,7 @@ const NoteDetailPage = () => {
             </button>
           </div>
 
-          {/* Note Editor */}
+       
           <div className="rounded-xl border border-base-300 bg-base-100 p-6 sm:p-8 space-y-6 shadow-sm hover:shadow transition">
             <input
               autoFocus

@@ -7,7 +7,7 @@ const Modal = () => {
 
  const [showModal] = useState(() => {
   const storedUser = localStorage.getItem("user");
-  return !storedUser; // true if no user, false if logged in
+  return !storedUser; 
 });
 
 

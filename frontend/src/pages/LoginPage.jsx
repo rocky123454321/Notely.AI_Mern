@@ -71,7 +71,7 @@ const LoginPage = () => {
 
       navigate("/");
     } catch (err) {
-      // ✅ Wrong email or password
+  
       if (err.response?.status === 401) {
         setError("Email or password is incorrect");
       } else {

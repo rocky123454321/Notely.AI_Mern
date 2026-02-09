@@ -30,7 +30,7 @@ const NoteCard = ({ note, setNotes }) => {
         transition-all duration-300 hover:-translate-y-1 hover:shadow-xl
       "
     >
-      {/* Accent line */}
+    
       <div className="absolute inset-x-0 top-0 h-1 rounded-t-xl bg-gradient-to-r from-primary to-emerald-400" />
 
       <div className="p-5">
