@@ -37,7 +37,7 @@ const Navbar = () => {
               className="btn btn-primary gap-2"
             >
               <PlusIcon size={18} />
-              Create Note
+              Create Notes
             </Link>
 
           {user ? (
